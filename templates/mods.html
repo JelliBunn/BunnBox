@@ -64,21 +64,24 @@
     }
 
     .dropdown {
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.3s ease, opacity 0.3s ease;
-      background: rgba(30, 30, 30, 0.9);
-      border-radius: 12px;
-      margin-top: 0.5rem;
-      padding: 0 1rem;
-    }
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  padding: 0 1rem;
+  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+  background: rgba(30, 30, 30, 0.9);
+  border-radius: 12px;
+  margin-top: 0.5rem;
+  pointer-events: none;
+}
 
-    .dropdown.open {
-      max-height: 500px;
-      opacity: 1;
-      padding: 1rem;
-    }
+.dropdown.open {
+  max-height: 500px; /* Large enough to fit any dropdown */
+  opacity: 1;
+  padding: 1rem;
+  pointer-events: auto;
+}
+
 
     .dropdown-item {
       display: flex;
