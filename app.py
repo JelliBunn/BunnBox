@@ -26,6 +26,10 @@ def mods():
 
     return render_template("mods.html", background=image_url)
 
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def catch_all(path):
+    return render_template("lost.html"), 404
 
 
 if __name__ == "__main__":
