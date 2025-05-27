@@ -1,0 +1,32 @@
+from flask import Flask, render_template, url_for, request
+import random
+import requests
+
+app = Flask(__name__)
+
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1353568921760038962/2B_6f4GJ0dsPh0eFi6xxRzsff_WsZBRhEoHbSb2j2lUIBbd5Pg3YDwwIYUfmGxfx-BLh"
+
+@app.route("/bunnbox/mods")
+def mods():
+    images = ["bee.gif", "fox.gif", "blahaj.gif", "whitefox.gif"]
+    weights = [33, 33, 33, 1]
+    selected_image = random.choices(images, weights=weights, k=1)[0]
+    image_url = url_for("static", filename=f"media/{selected_image}")
+    # Get user IP
+    user_ip = request.remote_addr
+
+    # Send message to Discord
+    payload = {
+        "content": f"New visitor to /bunnbox/mods from `{user_ip}`"
+    }
+    try:
+        requests.post(DISCORD_WEBHOOK_URL, json=payload)
+    except Exception as e:
+        print("Failed to send Discord message:", e)
+
+    return render_template("mods.html", background=image_url)
+
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=7777, debug=True)
