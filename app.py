@@ -4,27 +4,36 @@ import requests
 
 app = Flask(__name__)
 
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1353568921760038962/2B_6f4GJ0dsPh0eFi6xxRzsff_WsZBRhEoHbSb2j2lUIBbd5Pg3YDwwIYUfmGxfx-BLh"
+DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1353568921760038962/2B_6f4GJ0dsPh0eFi6xxRzsff_WsZBRhEoHbSb2j2lUIBbd5Pg3YDwwIYUfmGxfx-BLh" # rogue surveilance
 
-@app.route("/bunnbox/mods")
-def mods():
-    images = ["bee.gif", "fox.gif", "blahaj.gif", "whitefox.gif"]
-    weights = [33, 33, 33, 1]
-    selected_image = random.choices(images, weights=weights, k=1)[0]
-    image_url = url_for("static", filename=f"media/{selected_image}")
-    # Get user IP
-    user_ip = request.remote_addr
+@app.before_request
+def log_to_discord():
+    # Exclude static file requests
+    if request.path.startswith("/static"):
+        return
 
-    # Send message to Discord
+    ip = request.remote_addr
+    path = request.path
+
     payload = {
-        "content": f"New visitor to /bunnbox/mods from `{user_ip}`"
+        "content": f"Visitor from `{ip}` accessed `{path}`"
     }
+
     try:
         requests.post(DISCORD_WEBHOOK_URL, json=payload)
     except Exception as e:
         print("Failed to send Discord message:", e)
 
+@app.route("/bunnbox/mods")
+def mods():
+    images = ["bee.gif", "fox.gif", "blahaj.gif", "whitefox.gif"]
+    weights = [33, 33, 33, 1]
+    
+    selected_image = random.choices(images, weights=weights, k=1)[0]
+    image_url = url_for("static", filename=f"media/{selected_image}")
     return render_template("mods.html", background=image_url)
+
+
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
