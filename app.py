@@ -42,6 +42,7 @@ def restart_bunnbox():
     }
     try:
         response = requests.post(f"http://127.0.0.1:8082/API/Core/Restart", headers=headers)
+        print(response)
         if response.status_code == 200:
             return "BunnBox01 restarted successfully!", 200
         else:
