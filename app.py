@@ -35,7 +35,6 @@ def mods():
     return render_template("mods.html", background=image_url)
 
 
-
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def catch_all(path):
@@ -45,7 +44,6 @@ def catch_all(path):
 def restart_bunnbox():
     os.system("ampinstmgr -r BunnBox01")
     return "BunnBox01 instance restarted", 200
-
 
 
 if __name__ == "__main__":
