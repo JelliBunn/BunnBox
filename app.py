@@ -36,20 +36,17 @@ def mods():
 
 @app.route('/restart-bunnbox')
 def restart_bunnbox():
-    headers = {
-        "Authorization": f"AMP AvaIObdRui2yK1PE8nVjoJLwtrgNjt6khtKNvdZ8c5d56583",
-        "Content-Type": "application/json"
-    }
-    try:
-        response = requests.post(f"http://127.0.0.1:8082/API/Core/Restart", headers=headers)
-        print(response)
-        if response.status_code == 200:
-            return "BunnBox01 restarted successfully!", 200
-        else:
-            return f"Failed to restart. Status {response.status_code}: {response.text}", 500
-    except Exception as e:
-        return f"Error communicating with AMP API: {str(e)}", 500
-    
+    result = subprocess.run(
+        ["sudo", "-u", "amp", "ampinstmgr", "restartinstance", "BunnBox01"],
+        capture_output=True,
+        text=True
+    )
+
+    if result.returncode == 0:
+        return "BunnBox01 restarted successfully", 200
+    else:
+        return f"Restart failed:\n{result.stderr}", 500
+
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
