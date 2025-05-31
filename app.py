@@ -34,17 +34,26 @@ def mods():
     image_url = url_for("static", filename=f"media/{selected_image}")
     return render_template("mods.html", background=image_url)
 
+@app.route('/restart-bunnbox')
+def restart_bunnbox():
+    headers = {
+        "Authorization": f"AMP AvaIObdRui2yK1PE8nVjoJLwtrgNjt6khtKNvdZ8c5d56583",
+        "Content-Type": "application/json"
+    }
+    try:
+        response = requests.post(f"http://127.0.0.1:8082/API/Core/Restart", headers=headers)
+        if response.status_code == 200:
+            return "BunnBox01 restarted successfully!", 200
+        else:
+            return f"Failed to restart. Status {response.status_code}: {response.text}", 500
+    except Exception as e:
+        return f"Error communicating with AMP API: {str(e)}", 500
+    
 
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def catch_all(path):
     return render_template("lost.html"), 404
-
-@app.route('/restart-bunnbox')
-def restart_bunnbox():
-    os.system("ampinstmgr -r BunnBox01")
-    return "BunnBox01 instance restarted", 200
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=7777, debug=True)
