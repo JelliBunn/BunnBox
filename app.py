@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify
 import random
 import requests
 import os
@@ -37,18 +37,26 @@ def mods():
 
 @app.route('/restart-bunnbox')
 def restart_bunnbox():
-    result = subprocess.run(
-        ["sudo", "-u", "amp", "ampinstmgr", "restartinstance", "BunnBox01"],
-        capture_output=True,
-        text=True
-    )
+    try:
+        response = requests.post(
+            "https://srv734163.hstgr.cloud/API/ADSModule/RestartInstance",
+            headers={
+                "Accept": "application/json",
+                "User-Agent": "MyApplication/1.0"
+            },
+            json={
+                "InstanceName": "BunnBox",
+                "SESSIONID": "8aab565f-d049-48e4-82c8-d9b5bc68c054"
+            }
+        )
+        return jsonify({
+            "status_code": response.status_code,
+            "response": response.json() if response.headers.get("Content-Type") == "application/json" else response.text
+        }), response.status_code
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-    if result.returncode == 0:
-        return "BunnBox01 restarted successfully", 200
-    else:
-        return f"Restart failed:\n{result.stderr}", 500
-
-
+    
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def catch_all(path):
