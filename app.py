@@ -45,7 +45,7 @@ def restart_bunnbox():
                 "User-Agent": "MyApplication/1.0"
             },
             json={
-                "InstanceName": "BunnBox",
+                "InstanceName": "BunnBox01",
                 "SESSIONID": "8aab565f-d049-48e4-82c8-d9b5bc68c054"
             }
         )
