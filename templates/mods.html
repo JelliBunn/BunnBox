@@ -70,23 +70,23 @@
     }
 
     .dropdown {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  padding: 0 1rem;
-  transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
-  background: rgba(30, 30, 30, 0.9);
-  border-radius: 12px;
-  margin-top: 0.5rem;
-  pointer-events: none;
-}
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      padding: 0 1rem;
+      transition: max-height 0.4s ease, opacity 0.4s ease, padding 0.4s ease;
+      background: rgba(30, 30, 30, 0.9);
+      border-radius: 12px;
+      margin-top: 0.5rem;
+      pointer-events: none;
+   }
 
-.dropdown.open {
-  max-height: 500px; /* Large enough to fit any dropdown */
-  opacity: 1;
-  padding: 1rem;
-  pointer-events: auto;
-}
+  .dropdown.open {
+    max-height: 500px; /* Large enough to fit any dropdown */
+    opacity: 1;
+    padding: 1rem;
+    pointer-events: auto;
+  }
 
 
     .dropdown-item {
@@ -115,7 +115,7 @@
 </head>
 <body>
   <div class="container">
-    <div>
+    <div style="min-width: 420px;">
       <button class="button" onclick="toggleDropdown('drop1')">
         <img src="{{ url_for('static', filename='media/Rm8s.png') }}" alt="">
         Rm8s (Minecraft 1.21.5 Fabric)
