@@ -117,17 +117,21 @@
   <div class="container">
     <div>
       <button class="button" onclick="toggleDropdown('drop1')">
-        <img src="{{ url_for('static', filename='media/room8s.png') }}" alt="">
-        Rm8s 
-        (Minecraft 1.21.5 Fabric)
+        <img src="{{ url_for('static', filename='media/Rm8s.png') }}" alt="">
+        <p>Rm8s</p>
+        <p>(Minecraft 1.21.5 Fabric)</p>
       </button>
-      <div class="dropdown" id="drop1"> /* -prism -cursedfrog -manditory */
+      <div class="dropdown" id="drop1"> 
         <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/download.png') }}">
-          <a href="#">Download</a>
+          <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+          <a href="#">Required Server Mods</a>
         </div>
         <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/changelog.png') }}">
+          <img src="{{ url_for('static', filename='media/Rm8Client.png') }}">
+          <a href="#">Recomended Client (Optimization, QoL, Some Visual Enhancement)</a>
+        </div>
+        <div class="dropdown-item">
+          <img src="{{ url_for('static', filename='media/Shaders.png') }}">
           <a href="#">Changelog</a>
         </div>
       </div>
@@ -137,8 +141,8 @@
       <div style="flex: 1;">
         <button class="button" onclick="toggleDropdown('drop2')">
           <img src="{{ url_for('static', filename='media/2week.png') }}" alt="">
-          2Weeks
-          (Minecraft 1.21.4 Fabric)
+          <p>2Week</p>
+          <p>(Minecraft 1.21.4 Fabric)</p>
         </button>
         <div class="dropdown" id="drop2">
           <div class="dropdown-item">
