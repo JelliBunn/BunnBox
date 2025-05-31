@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request
 import random
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -39,6 +40,12 @@ def mods():
 @app.route("/<path:path>")
 def catch_all(path):
     return render_template("lost.html"), 404
+
+@app.route('/restart-bunnbox')
+def restart_bunnbox():
+    os.system("ampinstmgr -r BunnBox01")
+    return "BunnBox01 instance restarted", 200
+
 
 
 if __name__ == "__main__":
