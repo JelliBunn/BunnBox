@@ -123,11 +123,34 @@
       <div class="dropdown" id="drop1"> 
         <div class="dropdown-item">
           <img src="{{ url_for('static', filename='media/serverreq.png') }}">
-          <a href="#">Required Server Mods</a>
+          <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Server.zip">Required Server Mods</a>
         </div>
         <div class="dropdown-item">
           <img src="{{ url_for('static', filename='media/Rm8Client.png') }}">
-          <a href="#">Recomended Client (Optimization, QoL, Some Visual Enhancement)</a>
+          <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Client%20Reccomended.zip">Recomended Client (Optimization, QoL, Some Visual Enhancement)</a>
+        </div>
+        <div class="dropdown-item">
+          <img src="{{ url_for('static', filename='media/Shaders.png') }}">
+          <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Client%20Extra.zip">Extra Client (Shaders, Tweakeroo, Bobby)</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div style="min-width: 420px;">
+      <button class="button" onclick="toggleDropdown('drop4')">
+        <img src="{{ url_for('static', filename='media/M9Colonies.png') }}" alt="">
+        <div>
+          M9Colonies (Minecraft 1.20.1 Forge)
+        </div>
+      </button>
+      <div class="dropdown" id="drop4"> 
+        <div class="dropdown-item">
+          <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+          <a href="#">Required Server</a>
+        </div>
+        <div class="dropdown-item">
+          <img src="{{ url_for('static', filename='media/M9Colonies.png') }}">
+          <a href="#">Reccomended Client</a>
         </div>
         <div class="dropdown-item">
           <img src="{{ url_for('static', filename='media/Shaders.png') }}">
@@ -139,35 +162,31 @@
     <div class="row">
       <div style="flex: 1;">
         <button class="button" onclick="toggleDropdown('drop2')">
-          <img src="{{ url_for('static', filename='media/2week.png') }}" alt="">
+          <img src="{{ url_for('static', filename='media/2Week.png') }}" alt="">
           <p>2Week</p>
           <p>(Minecraft 1.21.4 Fabric)</p>
         </button>
         <div class="dropdown" id="drop2">
           <div class="dropdown-item">
-            <img src="{{ url_for('static', filename='media/shaders.png') }}">
-            <a href="#">Shaders</a>
+            <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+            <a href="https://srv734163.hstgr.cloud/fetch/b5fe3d2f-85b5-48f1-b85a-d00bf51ba054/__VDS__M2Week01/Minecraft/mods.zip">Required Server Mods</a>
           </div>
           <div class="dropdown-item">
-            <img src="{{ url_for('static', filename='media/tweaks.png') }}">
-            <a href="#">Client Tweaks</a>
+            <img src="{{ url_for('static', filename='media/Shaders.png') }}">
+            <a href="#">You're on your own for client customization</a>
           </div>
         </div>
       </div>
 
       <div style="flex: 1;">
         <button class="button" onclick="toggleDropdown('drop3')">
-          <img src="{{ url_for('static', filename='media/icon3.png') }}" alt="">
+          <img src="{{ url_for('static', filename='media/Rogue.png') }}" alt="">
           RogueCraft (Minecraft 25w14craftmine)
         </button>
         <div class="dropdown" id="drop3">
           <div class="dropdown-item">
             <img src="{{ url_for('static', filename='media/map.png') }}">
-            <a href="#">Map Viewer</a>
-          </div>
-          <div class="dropdown-item">
-            <img src="{{ url_for('static', filename='media/installer.png') }}">
-            <a href="#">Auto Installer</a>
+            <a href="#">Vanilla Server</a>
           </div>
         </div>
       </div>
