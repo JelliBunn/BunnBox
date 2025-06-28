@@ -34,7 +34,6 @@
       align-items: center;
     }
 
-
     .button {
       display: flex;
       align-items: center;
@@ -47,10 +46,9 @@
       transition: background-color 0.2s;
       justify-content: flex-start;
       padding: 1rem;
-      width: auto;
-      max-width: 100%;
+      width: 100%;
+      max-width: 420px;
     }
-
 
     .button:hover {
       background-color: #999;
@@ -63,12 +61,6 @@
       border-radius: 8px;
     }
 
-    .row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
     .dropdown {
       overflow: hidden;
       max-height: 0;
@@ -79,15 +71,15 @@
       border-radius: 12px;
       margin-top: 0.5rem;
       pointer-events: none;
-   }
+      max-width: 420px;
+    }
 
-  .dropdown.open {
-    max-height: 500px; /* Large enough to fit any dropdown */
-    opacity: 1;
-    padding: 1rem;
-    pointer-events: auto;
-  }
-
+    .dropdown.open {
+      max-height: 500px;
+      opacity: 1;
+      padding: 1rem;
+      pointer-events: auto;
+    }
 
     .dropdown-item {
       display: flex;
@@ -115,97 +107,66 @@
 </head>
 <body>
   <div class="container">
-    <div style="min-width: 420px;">
-      <button class="button" onclick="toggleDropdown('drop1')">
-        <img src="{{ url_for('static', filename='media/Rm8s.png') }}" alt="">
-        Rm8s (Minecraft 1.21.5 Fabric)
-      </button>
-      <div class="dropdown" id="drop1"> 
-        <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/serverreq.png') }}">
-          <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Server.zip">Required Server Mods</a>
-        </div>
-        <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/Rm8Client.png') }}">
-          <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Client%20Reccomended.zip">Recomended Client (Optimization, QoL, Some Visual Enhancement)</a>
-        </div>
-        <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/Shaders.png') }}">
-          <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Client%20Extra.zip">Extra Client (Shaders, Tweakeroo, Bobby)</a>
-        </div>
+    <button class="button" onclick="toggleDropdown('drop1')">
+      <img src="{{ url_for('static', filename='media/Rm8s.png') }}" alt="">
+      Rm8s (Minecraft 1.21.5 Fabric)
+    </button>
+    <div class="dropdown" id="drop1"> 
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+        <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Server.zip">Required Server Mods</a>
       </div>
-    </div>
-    <div class="row">
-      <div style="flex: 1;">
-      <button class="button" onclick="toggleDropdown('drop4')">
-        <img src="{{ url_for('static', filename='media/M9Colonies.png') }}" alt="">
-        <div>
-          M9Colonies (Minecraft 1.20.1 Forge)
-        </div>
-      </button>
-      <div class="dropdown" id="drop4"> 
-        <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/serverreq.png') }}">
-          <a href="#">Required Server</a>
-        </div>
-        <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/M9Colonies.png') }}">
-          <a href="#">Reccomended Client</a>
-        </div>
-        <div class="dropdown-item">
-          <img src="{{ url_for('static', filename='media/Shaders.png') }}">
-          <a href="#">Extra Client (Shaders, Tweakeroo, Bobby)</a>
-        </div>
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/Rm8Client.png') }}">
+        <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Client%20Reccomended.zip">Recommended Client (Optimization, QoL, Some Visual Enhancement)</a>
+      </div>
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/Shaders.png') }}">
+        <a href="https://srv734163.hstgr.cloud/fetch/ed27f579-e52d-4b16-9dcf-49a31152e596/__VDS__Room8s01/Minecraft/_Modpacks/Rm8s_Client%20Extra.zip">Extra Client (Shaders, Tweakeroo, Bobby)</a>
       </div>
     </div>
 
-    <div class="row">
-      <div style="flex: 1;">
-        <button class="button" onclick="toggleDropdown('drop2')">
-          <img src="{{ url_for('static', filename='media/2Week.png') }}" alt="">
-          <p>2Week</p>
-          <p>(Minecraft 1.21.4 Fabric)</p>
-        </button>
-        <div class="dropdown" id="drop2">
-          <div class="dropdown-item">
-            <img src="{{ url_for('static', filename='media/serverreq.png') }}">
-            <a href="https://srv734163.hstgr.cloud/fetch/b5fe3d2f-85b5-48f1-b85a-d00bf51ba054/__VDS__M2Week01/Minecraft/mods.zip">Required Server Mods</a>
-          </div>
-          <div class="dropdown-item">
-            <img src="{{ url_for('static', filename='media/Shaders.png') }}">
-            <a href="#">You're on your own for client customization</a>
-          </div>
-        </div>
+    <button class="button" onclick="toggleDropdown('drop2')">
+      <img src="{{ url_for('static', filename='media/2Week.png') }}" alt="">
+      <div>
+        <p style="margin: 0;">2Week</p>
+        <p style="margin: 0;">(Minecraft 1.21.4 Fabric)</p>
       </div>
+    </button>
+    <div class="dropdown" id="drop2">
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+        <a href="https://srv734163.hstgr.cloud/fetch/b5fe3d2f-85b5-48f1-b85a-d00bf51ba054/__VDS__M2Week01/Minecraft/mods.zip">Required Server Mods</a>
+      </div>
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/Shaders.png') }}">
+        <a href="#">You're on your own for client customization</a>
+      </div>
+    </div>
 
-      <div style="flex: 1;">
-        <button class="button" onclick="toggleDropdown('drop3')">
-          <img src="{{ url_for('static', filename='media/Rogue.png') }}" alt="">
-          RogueCraft (Minecraft 25w14craftmine)
-        </button>
-        <div class="dropdown" id="drop3">
-          <div class="dropdown-item">
-            <img src="{{ url_for('static', filename='media/map.png') }}">
-            <a href="#">Vanilla Server</a>
-          </div>
-        </div>
+    <button class="button" onclick="toggleDropdown('drop3')">
+      <img src="{{ url_for('static', filename='media/Rogue.png') }}" alt="">
+      RogueCraft (Minecraft 25w14craftmine)
+    </button>
+    <div class="dropdown" id="drop3">
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/map.png') }}">
+        <a href="#">Vanilla Server</a>
       </div>
     </div>
   </div>
 
   <script>
-  function toggleDropdown(id) {
-    const target = document.getElementById(id);
-    target.classList.toggle("open");
-  }
-
-  document.addEventListener("click", function (e) {
-    // Only close dropdowns if clicking *outside* all buttons and dropdowns
-    if (!e.target.closest(".button") && !e.target.closest(".dropdown")) {
-      document.querySelectorAll(".dropdown").forEach(el => el.classList.remove("open"));
+    function toggleDropdown(id) {
+      const target = document.getElementById(id);
+      target.classList.toggle("open");
     }
-  });
-</script>
 
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".button") && !e.target.closest(".dropdown")) {
+        document.querySelectorAll(".dropdown").forEach(el => el.classList.remove("open"));
+      }
+    });
+  </script>
 </body>
 </html>
