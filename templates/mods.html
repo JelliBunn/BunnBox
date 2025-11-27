@@ -107,6 +107,25 @@
 </head>
 <body>
   <div class="container">
+    <button class="button" onclick="toggleDropdown('drop0')">
+      <img src="{{ url_for('static', filename='media/') }}" alt="">
+      New Server
+    </button>
+    <div class="dropdown" id="drop0">
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+        <a href="#">Server Download</a>
+      </div>
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+        <a href="#">Client Download</a>
+      </div>
+      <div class="dropdown-item">
+        <img src="{{ url_for('static', filename='media/serverreq.png') }}">
+        <a href="#">Fabric Download</a>
+      </div>
+    </div>
+
     <button class="button" onclick="toggleDropdown('drop1')">
       <img src="{{ url_for('static', filename='media/Rm8s.png') }}" alt="">
       BunnBox! (Minecraft 1.21.6 NeoForge)
